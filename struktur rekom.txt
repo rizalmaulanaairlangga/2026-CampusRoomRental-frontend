@@ -1,0 +1,20 @@
+src/
+  pages/
+    RoomsList.tsx
+    RoomDetail.tsx (optional)
+    BookingsList.tsx
+    BookingForm.tsx
+  components/
+    RoomCard.tsx
+    BookingRow.tsx
+    Header.tsx
+  api/
+    apiClient.ts
+    rooms.ts
+    bookings.ts
+  hooks/
+    useRooms.ts
+    useBookings.ts
+  routes.tsx
+  App.tsx
+index.tsx
