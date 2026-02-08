@@ -24,4 +24,4 @@ Project documentation is organized under the `/docs` directory.
 ### Features
 - [Rooms List Page](frontend/docs/features/RoomsList.md)
 - [Booking Form](frontend/docs/features/booking-form.md)
-
+- [Bookings List & Detail](frontend/docs/features/bookings-list.md)
