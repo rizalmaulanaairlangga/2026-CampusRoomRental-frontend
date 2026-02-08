@@ -22,5 +22,6 @@ Project documentation is organized under the `/docs` directory.
 - [API Client & Core Data Hooks](frontend/docs/frontend-api.md)
 
 ### Features
-- [Rooms List Page](frontend/docs/RoomsList.md)
+- [Rooms List Page](frontend/docs/features/RoomsList.md)
+- [Booking Form](frontend/docs/features/booking-form.md)
 
