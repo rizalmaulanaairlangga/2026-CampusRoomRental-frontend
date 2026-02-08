@@ -1,5 +1,4 @@
 // src/components/RoomTable.tsx
-import React from 'react';
 import type { Room } from '../types/api';
 
 type Props = {

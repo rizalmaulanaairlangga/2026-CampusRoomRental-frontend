@@ -1,5 +1,5 @@
 // src/pages/RoomsList.tsx
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRooms } from '../hooks/useRooms';
 import RoomTable from '../components/RoomTable';
