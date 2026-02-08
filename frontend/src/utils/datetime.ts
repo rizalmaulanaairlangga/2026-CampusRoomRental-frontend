@@ -5,9 +5,9 @@ export function localToUtcISOString(local: string): string {
 
 // UTC ISO → local display string (untuk UI)
 export function utcToLocalDisplay(utcIso: string): string {
-  const d = new Date(utcIso);
-  return d.toLocaleString('id-ID', {
+  return new Date(utcIso).toLocaleString('id-ID', {
     dateStyle: 'medium',
     timeStyle: 'short',
   });
 }
+
