@@ -4,14 +4,19 @@ import { useRooms } from '../hooks/useRooms';
 import { useCreateBooking } from '../hooks/useCreateBooking';
 import { localToUtcISOString } from '../utils/datetime';
 import type { ApiError } from '../utils/apiError';
+import { useApiError } from '../hooks/useApiError';
+import LoadingOverlay from '../components/LoadingOverlay';
 
 export default function BookingForm() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
+
+  const { handleError } = useApiError(); // ✅ hook di level atas
+
   const prefilledRoomId = params.get('roomId') ?? '';
 
   const { data: rooms } = useRooms();
-  const createBooking = useCreateBooking();
+  const createBooking = useCreateBooking(); // ✅ deklarasi sebelum dipakai
 
   const [roomId, setRoomId] = useState(prefilledRoomId);
   const [start, setStart] = useState('');
@@ -44,15 +49,11 @@ export default function BookingForm() {
         endTime: localToUtcISOString(end),
       },
       {
-        onSuccess: () => {
-          navigate('/bookings');
-        },
+        onSuccess: () => navigate('/bookings'),
         onError: (err: ApiError) => {
-          if (err.status === 409) {
-            setFormError('This room is already booked for the selected time.');
-          } else {
-            setFormError(err.message || 'Failed to create booking.');
-          }
+          handleError(err, (_field, message) => {
+            setFormError(message);
+          });
         },
       }
     );
@@ -103,6 +104,8 @@ export default function BookingForm() {
           {createBooking.isPending ? 'Submitting...' : 'Create Booking'}
         </button>
       </form>
+
+      {createBooking.isPending && <LoadingOverlay />}
     </main>
   );
 }
