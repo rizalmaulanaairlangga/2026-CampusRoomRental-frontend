@@ -14,3 +14,4 @@ Standardizes how API and runtime errors are displayed across the application.
 ## Usage
 - Use `useApiError()` in mutation onError handlers
 - Global toast used for non-field errors
+
