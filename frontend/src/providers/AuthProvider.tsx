@@ -54,18 +54,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // =========================
   // Login
   // =========================
-  const login = useCallback(
+    const login = useCallback(
     async (email: string, password: string) => {
-      const data = await loginApi({ email, password });
+        const data = await loginApi({ email, password });
 
-      localStorage.setItem(TOKEN_KEY, data.token);
-      setToken(data.token);
-      setUser(data.user);
+        localStorage.setItem(TOKEN_KEY, data.token);
+        setToken(data.token);
+        setUser(data.user);
 
-      navigate("/"); // redirect setelah login
+        if (data.user.role === "admin") {
+        navigate("/admin");
+        } else {
+        navigate("/dashboard");
+        }
+
     },
     [navigate]
-  );
+    );
 
   // =========================
   // Logout

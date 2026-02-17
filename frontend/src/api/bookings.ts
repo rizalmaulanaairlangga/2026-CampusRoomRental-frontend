@@ -22,12 +22,26 @@ export const createBooking = async (
   return apiClient.post(RESOURCE, payload);
 };
 
+export interface BookingUpdateDTO {
+  id: string;
+  roomId: string;
+  startTime: string;
+  endTime: string;
+}
+
 export const updateBooking = async (
-  id: string,
-  payload: Partial<Booking>
+  payload: BookingUpdateDTO
 ): Promise<Booking> => {
-  return apiClient.put(`${RESOURCE}/${id}`, payload);
+  return apiClient.put(
+    `/bookings/${payload.id}/reschedule`,
+    {
+      roomId: payload.roomId,
+      startTime: payload.startTime,
+      endTime: payload.endTime,
+    }
+  );
 };
+
 
 export const updateBookingStatus = async (
   id: string,
