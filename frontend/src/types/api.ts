@@ -22,16 +22,22 @@ export interface RoomUpdateDTO {
   status?: 'active' | 'inactive';
 }
 
+export type BookingStatus =
+  | "pending"
+  | "approved"
+  | "rejected"
+  | "cancelled";
+
 export interface Booking {
   id: string;
   roomId: string;
   room: Room;
   startTime: ISODateString;
   endTime: ISODateString;
-  status: 'booked' | 'cancelled';
   createdAt?: ISODateString;
   updatedAt?: ISODateString;
   deletedAt?: ISODateString | null;
+  status: BookingStatus;
 }
 
 export interface BookingCreateDTO {
