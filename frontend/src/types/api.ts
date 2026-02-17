@@ -25,6 +25,7 @@ export interface RoomUpdateDTO {
 export interface Booking {
   id: string;
   roomId: string;
+  room: Room;
   startTime: ISODateString;
   endTime: ISODateString;
   status: 'booked' | 'cancelled';
