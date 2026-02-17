@@ -1,11 +1,11 @@
 import AppRoutes from "./routes";
+import { Toaster } from "react-hot-toast";
 
-function App() {
+export default function App() {
   return (
-    <div className="p-10">
+    <>
       <AppRoutes />
-    </div>
+      <Toaster position="top-right" />
+    </>
   );
 }
-
-export default App;

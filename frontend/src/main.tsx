@@ -6,7 +6,6 @@ import App from './App'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { ToastProvider } from './providers/ToastProvider'
 import './index.css'
-import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./providers/AuthProvider";
 
 
@@ -30,8 +29,6 @@ createRoot(document.getElementById('root')!).render(
           <BrowserRouter>
             <AuthProvider>
               <App />
-              <Toaster position="top-right" />
-              
             </AuthProvider>
 
           </BrowserRouter>

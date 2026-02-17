@@ -3,8 +3,9 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: import.meta.env.VITE_API_BASE_URL,
 });
+
 
 export interface LoginRequest {
   email: string;
@@ -24,12 +25,12 @@ export interface LoginResponse {
 }
 
 export async function login(payload: LoginRequest) {
-  const { data } = await api.post<LoginResponse>("/auth/login", payload);
+  const { data } = await api.post<LoginResponse>("/Auth/login", payload);
   return data;
 }
 
 export async function getMe(token: string) {
-  const { data } = await api.get<AuthUser>("/auth/me", {
+  const { data } = await api.get<AuthUser>("/Auth/me", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
